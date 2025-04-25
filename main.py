@@ -26,17 +26,24 @@ if not TOKEN:
     logging.error("TOKEN environment variable not set")
     raise ValueError("TOKEN environment variable not set")
 
-# Admin foydalanuvchilar ro'yxati (Telegram user ID)
-ADMINS = os.getenv('ADMINS', '').split(',')
+# Get ADMIN IDs from environment variables
+raw_admins = os.getenv('ADMINS', '')
+logging.info(f"Raw ADMINS value from env: '{raw_admins}'")
+ADMINS = raw_admins.split(',')
 ADMINS = [int(admin_id) for admin_id in ADMINS if admin_id.strip().isdigit()]
+
+if not ADMINS:
+    logging.warning("No valid admin IDs found in ADMINS environment variable.")
+else:
+    logging.info(f"Loaded admin IDs: {ADMINS}")
 
 bot = telebot.TeleBot(TOKEN)
 
 EXCEL_FILE = 'products.xlsx'
 CSV_FILE = 'products.csv'
 
-SUCCESS_STICKER = 'CAACAgIAAxkBAAIBG2YJ5qGf...'
-ERROR_STICKER = 'CAACAgIAAxkBAAIBH2YJ5qH...'
+SUCCESS_STICKER = 'CAACAgIAAxkBAAIBG2YJ5qGf...'  # O'zingizning muvaffaqiyat stikeringiz
+ERROR_STICKER = 'CAACAgIAAxkBAAIBH2YJ5qH...'  # O'zingizning xato stikeringiz
 
 # Foydalanuvchi tillarini saqlash uchun lug'at
 user_languages = {}
@@ -286,7 +293,7 @@ def handle_admin_panel(message):
     bot.reply_to(message, prompt_msg[lang], reply_markup=admin_menu(user_id))
     bot.register_next_step_handler(message, process_admin_action)
 
-# Admin harakatlarini qayta ishlash
+# Admin harakatlar | yangi admin qo'shish
 def process_admin_action(message):
     user_id = message.from_user.id
     lang = get_user_language(user_id)
@@ -452,21 +459,13 @@ def search_by_trek_code(message):
             }
             response += error_msg[lang]
     
-    try:
-        bot.reply_to(message, response.strip())
-        time.sleep(0.5)
-        if found_any:
-            bot.send_sticker(message.chat.id, SUCCESS_STICKER)
-        else:
-            bot.send_sticker(message.chat.id, ERROR_STICKER)
-    except telebot.apihelper.ApiTelegramException as e:
-        logging.error(f"Xabar yuborishda xato: {str(e)}")
-        error_msg = {
-            'uz': "Xabar yuborishda xato yuz berdi. Iltimos, keyinroq qayta urinib ko'ring.",
-            'ru': "Ошибка при отправке сообщения. Пожалуйста, попробуйте снова позже."
-        }
-        bot.reply_to(message, error_msg[lang])
     
+    bot.reply_to(message, response.strip())
+    time.sleep(0.5)
+    if found_any:
+        bot.send_sticker(message.chat.id, SUCCESS_STICKER)
+    else:
+        bot.send_sticker(message.chat.id, ERROR_STICKER)    
     bot.register_next_step_handler(message, search_by_trek_code)
 
 # Mijoz kodi bo'yicha qidirish
@@ -500,18 +499,9 @@ def search_by_customer_code(message):
             'uz': f"📋 Mijoz kodi: {code} bo'yicha barcha yuklar ro'yxati:",
             'ru': f"📋 Список всех грузов по коду клиента: {code}:"
         }
-        try:
-            bot.reply_to(message, header_msg[lang])
-            time.sleep(0.5)
-        except telebot.apihelper.ApiTelegramException as e:
-            logging.error(f"Xabar yuborishda xato: {str(e)}")
-            error_msg = {
-                'uz': "Xabar yuborishda xato yuz berdi. Iltimos, keyinroq qayta urinib ko'ring.",
-                'ru': "Ошибка при отправке сообщения. Пожалуйста, попробуйте снова позже."
-            }
-            bot.reply_to(message, error_msg[lang])
-            return
         
+        bot.reply_to(message, header_msg[lang])
+        time.sleep(0.5)
         for idx, item in enumerate(results, 1):
             result_msg = {
                 'uz': (
@@ -543,7 +533,7 @@ def search_by_customer_code(message):
             except telebot.apihelper.ApiTelegramException as e:
                 logging.error(f"Yuk #{idx} xabarini yuborishda xato: {str(e)}")
                 error_msg = {
-                    'uz': f"Yuk #{idx} ma'lumotini yuborishda xato yuz berdi.",
+                    'uz': f"Yuk #{idx} malumotini yuborishda xato yuz berdi.",
                     'ru': f"Ошибка при отправке информации о грузе #{idx}."
                 }
                 bot.reply_to(message, error_msg[lang])

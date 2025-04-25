@@ -1,0 +1,129 @@
+2025-04-25 07:17:03,360 - INFO - products.csv fayli topildi, o'qilmoqda...
+2025-04-25 07:17:03,404 - INFO - CSV fayl muvaffaqiyatli o'qildi.
+2025-04-25 07:17:07,574 - INFO - products.csv fayli topildi, o'qilmoqda...
+2025-04-25 07:17:07,579 - INFO - CSV fayl muvaffaqiyatli o'qildi.
+2025-04-25 07:17:11,642 - INFO - products.csv fayli topildi, o'qilmoqda...
+2025-04-25 07:17:11,647 - INFO - CSV fayl muvaffaqiyatli o'qildi.
+2025-04-25 07:17:13,900 - INFO - products.csv fayli topildi, o'qilmoqda...
+2025-04-25 07:17:13,907 - INFO - CSV fayl muvaffaqiyatli o'qildi.
+2025-04-25 07:17:13,915 - INFO - products.csv fayli topildi, o'qilmoqda...
+2025-04-25 07:17:13,923 - INFO - CSV fayl muvaffaqiyatli o'qildi.
+2025-04-25 07:19:05,913 - INFO - products.csv fayli topildi, o'qilmoqda...
+2025-04-25 07:19:05,937 - INFO - CSV fayl muvaffaqiyatli o'qildi.
+2025-04-25 07:19:07,323 - ERROR - Stiker yuborishda xato: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: wrong HTTP URL specified
+2025-04-25 07:19:13,422 - INFO - products.csv fayli topildi, o'qilmoqda...
+2025-04-25 07:19:13,443 - INFO - CSV fayl muvaffaqiyatli o'qildi.
+2025-04-25 07:19:14,256 - ERROR - Threaded polling exception: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: wrong HTTP URL specified
+2025-04-25 07:19:14,262 - ERROR - Exception traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\telebot\__init__.py", line 1235, in __threaded_polling
+    self.worker_pool.raise_exceptions()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\telebot\util.py", line 150, in raise_exceptions
+    raise self.exception_info
+  File "C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\telebot\util.py", line 93, in run
+    task(*args, **kwargs)
+    ~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\telegram-bot-main\main.py", line 461, in search_by_trek_code
+    bot.send_sticker(message.chat.id, ERROR_STICKER)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\telebot\__init__.py", line 2794, in send_sticker
+    apihelper.send_data(
+    ~~~~~~~~~~~~~~~~~~~^
+        self.token, chat_id, sticker, 'sticker',
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        reply_parameters=reply_parameters, business_connection_id=business_connection_id,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        message_effect_id=message_effect_id, allow_paid_broadcast=allow_paid_broadcast)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\telebot\apihelper.py", line 1089, in send_data
+    return _make_request(token, method_url, params=payload, files=files, method='post')
+  File "C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\telebot\apihelper.py", line 168, in _make_request
+    json_result = _check_result(method_name, result)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\telebot\apihelper.py", line 195, in _check_result
+    raise ApiTelegramException(method_name, result, result_json)
+telebot.apihelper.ApiTelegramException: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: wrong HTTP URL specified
+
+2025-04-25 07:19:29,104 - INFO - products.csv fayli topildi, o'qilmoqda...
+2025-04-25 07:19:29,109 - INFO - CSV fayl muvaffaqiyatli o'qildi.
+2025-04-25 07:19:30,045 - ERROR - Threaded polling exception: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: wrong HTTP URL specified
+2025-04-25 07:19:30,048 - ERROR - Exception traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\telebot\__init__.py", line 1235, in __threaded_polling
+    self.worker_pool.raise_exceptions()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\telebot\util.py", line 150, in raise_exceptions
+    raise self.exception_info
+  File "C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\telebot\util.py", line 93, in run
+    task(*args, **kwargs)
+    ~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\telebot\__init__.py", line 9165, in _run_middlewares_and_handler
+    result = handler['function'](message)
+  File "C:\Users\user\Desktop\telegram-bot-main\main.py", line 592, in handle_message
+    search_by_trek_code(message)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Users\user\Desktop\telegram-bot-main\main.py", line 459, in search_by_trek_code
+    bot.send_sticker(message.chat.id, SUCCESS_STICKER)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\telebot\__init__.py", line 2794, in send_sticker
+    apihelper.send_data(
+    ~~~~~~~~~~~~~~~~~~~^
+        self.token, chat_id, sticker, 'sticker',
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        reply_parameters=reply_parameters, business_connection_id=business_connection_id,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        message_effect_id=message_effect_id, allow_paid_broadcast=allow_paid_broadcast)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\telebot\apihelper.py", line 1089, in send_data
+    return _make_request(token, method_url, params=payload, files=files, method='post')
+  File "C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\telebot\apihelper.py", line 168, in _make_request
+    json_result = _check_result(method_name, result)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\telebot\apihelper.py", line 195, in _check_result
+    raise ApiTelegramException(method_name, result, result_json)
+telebot.apihelper.ApiTelegramException: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: wrong HTTP URL specified
+
+2025-04-25 07:20:53,275 - INFO - products.csv fayli topildi, o'qilmoqda...
+2025-04-25 07:20:53,283 - INFO - CSV fayl muvaffaqiyatli o'qildi.
+2025-04-25 07:21:03,639 - ERROR - Stiker yuborishda xato: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: wrong HTTP URL specified
+2025-04-25 07:34:58,295 - INFO - Raw ADMINS value from env: '5374094754,1684044227'
+2025-04-25 07:34:58,295 - INFO - Loaded admin IDs: [5374094754, 1684044227]
+2025-04-25 07:35:33,228 - ERROR - Faylni yuklashda xatolik: 'NoneType' object has no attribute 'file_id'
+2025-04-25 07:35:40,095 - INFO - products.csv fayli topildi, o'qilmoqda...
+2025-04-25 07:35:40,130 - INFO - CSV fayl muvaffaqiyatli o'qildi.
+2025-04-25 07:35:41,030 - ERROR - Threaded polling exception: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: wrong HTTP URL specified
+2025-04-25 07:35:41,043 - ERROR - Exception traceback:
+Traceback (most recent call last):
+  File "C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\telebot\__init__.py", line 1235, in __threaded_polling
+    self.worker_pool.raise_exceptions()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\telebot\util.py", line 150, in raise_exceptions
+    raise self.exception_info
+  File "C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\telebot\util.py", line 93, in run
+    task(*args, **kwargs)
+    ~~~~^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\Desktop\telegram-bot-main\main.py", line 468, in search_by_trek_code
+    bot.send_sticker(message.chat.id, ERROR_STICKER)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\telebot\__init__.py", line 2794, in send_sticker
+    apihelper.send_data(
+    ~~~~~~~~~~~~~~~~~~~^
+        self.token, chat_id, sticker, 'sticker',
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        reply_parameters=reply_parameters, business_connection_id=business_connection_id,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        message_effect_id=message_effect_id, allow_paid_broadcast=allow_paid_broadcast)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\telebot\apihelper.py", line 1089, in send_data
+    return _make_request(token, method_url, params=payload, files=files, method='post')
+  File "C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\telebot\apihelper.py", line 168, in _make_request
+    json_result = _check_result(method_name, result)
+  File "C:\Users\user\AppData\Local\Programs\Python\Python313\Lib\site-packages\telebot\apihelper.py", line 195, in _check_result
+    raise ApiTelegramException(method_name, result, result_json)
+telebot.apihelper.ApiTelegramException: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: wrong HTTP URL specified
+
+2025-04-25 07:35:47,674 - INFO - products.csv fayli topildi, o'qilmoqda...
+2025-04-25 07:35:47,688 - INFO - CSV fayl muvaffaqiyatli o'qildi.
+2025-04-25 07:35:57,956 - ERROR - Stiker yuborishda xato: A request to the Telegram API was unsuccessful. Error code: 400. Description: Bad Request: wrong HTTP URL specified
